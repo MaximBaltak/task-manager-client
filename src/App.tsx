@@ -4,7 +4,7 @@ import './App.css';
 
 function App() {
 useEffect(() => {
-  fetch('http:://5.159.101.31:5000')
+  fetch('http:://5.159.101.31/api')
   .then(res => res.json())
   .then(data => console.log(data))
   .catch(e => console.log(e))
