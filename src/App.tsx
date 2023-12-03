@@ -5,7 +5,7 @@ import './App.css';
 function App() {
 useEffect(() => {
   fetch('/api')
-  .then(res => res.json())
+  .then(res => res.text())
   .then(data => console.log(data))
   .catch(e => console.log(e))
 })
