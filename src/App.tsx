@@ -26,7 +26,7 @@ function App() {
      <p>Статус сервера:</p>
       {
         !status ? <div className='error'></div> :
-          status === 1 ? <div className=''></div> :
+          status === 1 ? <div className='ok'></div> :
             <div className='panding'></div>
       }
      </div>
