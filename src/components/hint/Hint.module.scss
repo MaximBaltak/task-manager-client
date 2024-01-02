@@ -1,0 +1,22 @@
+@import '@scss/style';
+
+.hint{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    column-gap: 5px;
+    .status{
+        width: 10px;
+        height: 10px;
+        border-radius: 100%;
+        background: $status-ok-color;
+    }
+    .text{
+        margin: 0;
+        color: #FF0606;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: $status-ok-color;
+    }
+}

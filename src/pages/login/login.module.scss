@@ -1,0 +1,12 @@
+.wrapper{
+    justify-content: center;
+    align-items: center;
+}
+.mode{
+    height: 35px;
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    right: 50px;
+    z-index: 2;
+}

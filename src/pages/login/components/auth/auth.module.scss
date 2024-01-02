@@ -1,0 +1,30 @@
+@import '@scss/style';
+.register{
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    width: 260px;
+    
+}
+.title{
+    color: $text-color;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+.form{
+    display: flex;
+    flex-flow: column;
+    justify-self: start;
+    align-items: center;
+    width: 261px;
+    row-gap: 27px;
+    .input{
+        width: 100%;
+        display: flex;
+        flex-flow: column;
+        row-gap: 3px;
+    }
+}
