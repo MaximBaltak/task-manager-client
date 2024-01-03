@@ -1,11 +1,13 @@
 import React, { FC } from 'react'
 import {ReactComponent as LogoSVG} from '@assets/image/logo.svg';
+import {ReactComponent as LogoWhiteSVG} from '@assets/image/logo-white.svg';
 
 interface LogoProps {
     size: 'bg' | 'md' | 'ml',
+    color?: "white"
 }
 
-export const Logo: FC<LogoProps> = ({size}) => {
+export const Logo: FC<LogoProps> = ({size,color}) => {
    const sizeStyle = {
     width: 200,
     height: 107,
@@ -20,7 +22,9 @@ export const Logo: FC<LogoProps> = ({size}) => {
     sizeStyle.height = 16
    }   
    
-  return (
-    <LogoSVG style={{...sizeStyle}}/>
-  )
+   if(color === 'white'){
+        return  <LogoWhiteSVG style={{...sizeStyle}}/>
+   }
+   
+   return  <LogoSVG style={{...sizeStyle}}/>
 }

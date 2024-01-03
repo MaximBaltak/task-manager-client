@@ -1,5 +1,8 @@
 @import '@scss/style';
-
+@import "@fonts/fonts";
+*{
+  font-family: Roboto;
+}
 html,body {
   height: 100%;
   position: relative;
@@ -7,7 +10,6 @@ html,body {
   padding: 0;
   background: $bacckground-app;
   box-sizing: border-box;
-  font-family:  'Roboto',
 }
  #root {
   height: 100%;

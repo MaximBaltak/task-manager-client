@@ -1,0 +1,9 @@
+@import '@scss/style';
+.flex{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $text-color;
+    font-size: 16px;
+    font-weight: 700;
+}

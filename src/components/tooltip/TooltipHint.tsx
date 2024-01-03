@@ -3,9 +3,10 @@ import { OverlayTrigger, Tooltip } from 'react-bootstrap'
 import './tooltipHint.scss'
 interface TooltipHintProps {
     children: ReactElement,
-    text: string
+    text: string,
+    placement?: "left-start" | "top" | "bottom" 
 }
-export const TooltipHint: FC<TooltipHintProps> = ({ children, text }) => {
+export const TooltipHint: FC<TooltipHintProps> = ({ children, text,placement = "left-start" }) => {
     const renderTooltip = (props:any) => (
         <Tooltip id="button-tooltip" {...props}>
             {text}
@@ -14,7 +15,7 @@ export const TooltipHint: FC<TooltipHintProps> = ({ children, text }) => {
 
     return (
         <OverlayTrigger
-            placement='left-start'
+            placement={placement}
             delay={{ show: 100, hide: 100 }}
             overlay={renderTooltip}>
             {children}

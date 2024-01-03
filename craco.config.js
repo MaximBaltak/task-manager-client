@@ -13,6 +13,8 @@ module.exports = {
         "@store": path.resolve(__dirname, 'src/store'),
         "@scss": path.resolve(__dirname, 'src/scss'),
         "@enum": path.resolve(__dirname, 'src/enum'),
+        "@fonts": path.resolve(__dirname, 'src/fonts'),
+        "@modal": path.resolve(__dirname, 'src/modal'),
     },
   },
 };

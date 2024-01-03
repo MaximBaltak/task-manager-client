@@ -18,6 +18,8 @@
       "@store/*": ["store/*"],
       "@utils/*": ["utils/*"],
       "@enum/*": ["enum/*"],
+      "@fonts/*":["fronts/*"],
+      "@modal/*": ["modal/*"],
     },
     "allowJs": true,
     "skipLibCheck": true,
