@@ -5,9 +5,13 @@ import { Link } from 'react-router-dom'
 import { TooltipHint } from '@components/tooltip/TooltipHint'
 import TaskSVG from '@assets/image/task.svg'
 import { DialogProfile } from '../dialog-profile/DialogProfile'
+import { useAppDispatch } from '@hooks/useAppDispatch'
+import { exitUser } from '@store/slices/user-slice'
+import { useAppSelector } from '@hooks/useAppSelector'
 export const Header = () => {
     const [show, setShow] = useState<boolean>(false)
-    
+    const dispatch = useAppDispatch()
+    const user = useAppSelector(({user}) => user.user) 
     const onShow = () => setShow(true)
     const onClose = () => setShow(false)
     return (
@@ -16,7 +20,7 @@ export const Header = () => {
             <div className={styles.wrapper}>
                 <Logo size='md' color='white' />
                 <TooltipHint text='Профиль' placement='bottom'>
-                <p onClick={onShow} className={styles.profile}>Балтак Максим Владимирович</p>
+                <p onClick={onShow} className={styles.profile}>{user?.name}</p>
                 </TooltipHint>
             </div>
             <div className={styles.menu}>
@@ -27,10 +31,10 @@ export const Header = () => {
                 </Link>
             </div>
             <div className={styles.out}>
-                <p className={styles.text}>Выйти</p>
+                <p onClick={() => dispatch(exitUser())} className={styles.text}>Выйти</p>
             </div>
         </div>
-        <DialogProfile onClose={onClose} show={show}/>
+        <DialogProfile user={user} onClose={onClose} show={show}/>
     </>
     )
 }

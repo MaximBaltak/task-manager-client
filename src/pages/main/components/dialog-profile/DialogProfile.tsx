@@ -8,11 +8,14 @@ import { ChangeName } from '@modal/change-name/ChangeName'
 import { ChangeLogin } from '@modal/change-login/ChangeLogin'
 import { ChangePassword } from '@modal/change-password/ChangePassword'
 import { DeleteProfile } from './../../../../modal/delete-profile/DeleteProfile';
+import { IUser } from '@api/types/user-response'
+import { format } from 'date-fns'
 interface DialogProfileProps {
+  user: IUser | null
   onClose: () => void
   show: boolean
 }
-export const DialogProfile: FC<DialogProfileProps> = ({onClose,show}) => {
+export const DialogProfile: FC<DialogProfileProps> = ({onClose,show,user}) => {
   const [isModalChangeName, setIsModalChangeName] = useState<boolean>(false)
   const [isModalChangeLogin, setIsModalChangeLogin] = useState<boolean>(false)
   const [isModalChangePassword, setIsModalChangePassword] = useState<boolean>(false)
@@ -38,15 +41,15 @@ export const DialogProfile: FC<DialogProfileProps> = ({onClose,show}) => {
         <Offcanvas.Header closeButton>
           <Offcanvas.Title>
             <div className={styles.header}>
-              <p className={styles.title}>Балтак Максим Владимирович</p>
+              <p className={styles.title}>{user?.name}</p>
               <div className={styles.desc}>
-                <p className={styles.login}>Test7282</p>
+                <p className={styles.login}>{user?.login}</p>
                 <div>
                   <p className={styles.register}>Регистрация:</p>
-                  <p className={styles.date}>02.12.2023</p>
+                  {user && <p className={styles.date}>{format(user.createAt,'dd.mm.yyyy')}</p>}
                 </div>
               </div>
-            </div>
+            </div>  
           </Offcanvas.Title>
         </Offcanvas.Header>
         <Offcanvas.Body style={{position: 'relative'}}>

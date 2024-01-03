@@ -15,7 +15,9 @@ export const ButtonSubmit: FC<ButtonSubmitProps> = ({ color, disabled, text, wid
     color,
     width,
     height,
-    background
+    background,
+    cursor: disabled ? 'auto': 'pointer',
+    opacity: disabled ? 0.4 : 1
   }
   return (
     <button disabled={disabled} className={styles.submit} style={styleButton} onClick={onClick}>{text}</button>

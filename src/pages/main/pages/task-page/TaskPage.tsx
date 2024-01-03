@@ -1,7 +1,8 @@
 import React from 'react'
 import "./task-page.module.scss"
+import { Plug } from '@components/plug/Plug'
 export const TaskPage = () => {
   return (
-    <div>задачи</div>
+    <Plug message='Страница "Задачи" находится в разработке'/>
   )
 }

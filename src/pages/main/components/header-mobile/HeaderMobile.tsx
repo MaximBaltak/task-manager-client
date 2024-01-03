@@ -6,9 +6,13 @@ import { DialogProfile } from '../dialog-profile/DialogProfile'
 import { Dropdown } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import './style.scss'
+import { useAppSelector } from '@hooks/useAppSelector'
+import { useAppDispatch } from '@hooks/useAppDispatch'
+import { exitUser } from '@store/slices/user-slice'
 export const HeaderMobile = () => {
     const [show, setShow] = useState<boolean>(false)
-
+    const user = useAppSelector(({user}) => user.user) 
+    const dispatch = useAppDispatch()
     const onShow = () => setShow(true)
     const onClose = () => setShow(false)
     return (
@@ -16,11 +20,11 @@ export const HeaderMobile = () => {
             <div className={styles.header}>
                 <div className={styles.wrapper}>
                     <Logo size='md' color='white' />
-                    <p onClick={onShow} className={styles.profile}>Балтак Максим Владимирович</p>
+                    <p onClick={onShow} className={styles.profile}>{user?.name}</p>
                 </div>
                 <div className={styles.menu}>
                     <div className={styles.out}>
-                        <p className={styles.text}>Выйти</p>
+                        <p onClick={() => dispatch(exitUser())} className={styles.text}>Выйти</p>
                     </div>
                     <Dropdown>
                         <Dropdown.Toggle as='div' id="dropdown-basic">
@@ -37,7 +41,7 @@ export const HeaderMobile = () => {
             
                 </div>
             </div>
-            <DialogProfile onClose={onClose} show={show} />
+            <DialogProfile user={null} onClose={onClose} show={show} />
         </>
     )
 }
