@@ -25,3 +25,6 @@ export interface ICreateTask {
     title: string
     description: string
 }
+export interface ICountByStatus {
+    [key: string]: number,
+}

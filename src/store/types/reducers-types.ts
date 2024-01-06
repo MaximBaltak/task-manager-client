@@ -1,4 +1,4 @@
-import { ITask } from "@api/types/task-response";
+import { ICountByStatus, ITask } from "@api/types/task-response";
 import { IUser } from "@api/types/user-response";
 
 export interface IUserState {
@@ -7,9 +7,11 @@ export interface IUserState {
 }
 export interface ITaskState {
     tasks: ITask[]
+    countByStatus: ICountByStatus
     taskCreate: ITask[]
     taskWorks: ITask[]
-    taskClosed: ITask[]   
+    taskClosed: ITask[]
+    isDetailModal: boolean
 }
 
 export interface IDetailTaskState {

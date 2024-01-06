@@ -3,16 +3,15 @@ import styles from './dialogTask.module.scss'
 import { Offcanvas } from 'react-bootstrap'
 import { SelectStatus } from '@components/selectStatus/SelectStatus'
 import { IStatusSelect } from '@components/selectStatus/types/selectStatus'
-import { statusTask, statusTaskColor } from '@enum/statusTaskType'
 import { DeleteTask } from '@modal/deleteTask/DeleteTask'
 import { TextareaEdit } from '@components/textareaEdit/TextareaEdit'
 import { countCharacters } from '@enum/countCharacters'
 import { defaultStatus, statusOptions } from '@const/constData'
-import { ITask } from '@api/types/task-response'
 import { useAppSelector } from '@hooks/useAppSelector'
 import { useAppDispatch } from '@hooks/useAppDispatch'
-import { update, updateStatus } from '@store/slices/detail-task-slice'
-import { IUpdateStatusTaskForm, IUpdateTaskForm } from '@store/types/actions-types'
+import { getTask, updateTask } from '@store/slices/detail-task-slice'
+import { IUpdateTaskForm } from '@store/types/actions-types'
+import { getTasks} from '@store/slices/task-slice'
 interface DialogTaskProps {
   onClose: () => void
   show: boolean,
@@ -20,7 +19,7 @@ interface DialogTaskProps {
 }
 
 
-export const DialogTask: FC<DialogTaskProps> = ({onClose,show}) => {
+export const DialogTask: FC<DialogTaskProps> = ({onClose,show,id}) => {
     const task = useAppSelector(state => state.detailTask.task)
     const dispatch = useAppDispatch() 
     const [selectedStatus,setSelectedStatus] = useState<IStatusSelect[]>([defaultStatus])
@@ -43,16 +42,23 @@ export const DialogTask: FC<DialogTaskProps> = ({onClose,show}) => {
       }
     },[show,task])
     
+    useEffect(() => {
+      if(show){
+          dispatch(getTask(id))
+      }
+    },[show])
+    
     const onShow = () => setIsShow(true)
     const onHide = () => setIsShow(false)
     
-    const onChangeStatus = (value: IStatusSelect[]) => {
+    const  onChangeStatus = async (value: IStatusSelect[]) => {
       if(value[0].value !== task?.status) {
-        const form: IUpdateStatusTaskForm = {
-          id: 12,
+        const form: IUpdateTaskForm = {
+          id: task?.id ?? 0,
           status: value[0].value
         }
-        dispatch(updateStatus(form))
+        await dispatch(updateTask(form))
+        await dispatch(getTasks())
       }
       setSelectedStatus([...value])
     }
@@ -75,26 +81,28 @@ export const DialogTask: FC<DialogTaskProps> = ({onClose,show}) => {
         setIsEditDescription(true)
       } 
     }
-    const closeEditTitle = () => {
+    const closeEditTitle = async () => {
       if(!titleEdit.length) return;
       
       if(task?.title !== titleEdit) {
         const form: IUpdateTaskForm = {
-          id: 12,
+          id: task?.id ?? 0,
           title: titleEdit
         }
-          dispatch(update(form))
+          await dispatch(updateTask(form))
+          await dispatch(getTasks())
       }
       setIsEditTitle(false)
     }
     
-    const closeEditDesc = () => {
+    const closeEditDesc = async () => {
          if(task?.description !== descEdit) {
         const form: IUpdateTaskForm = {
-          id: 12,
+          id: task?.id ?? 0,
           description: descEdit
         }
-          dispatch(update(form))
+         await dispatch(updateTask(form))
+           await dispatch(getTasks())
       }
       setIsEditDescription(false)
     }
@@ -102,16 +110,18 @@ export const DialogTask: FC<DialogTaskProps> = ({onClose,show}) => {
     return (
     <>
     <Offcanvas show={show} onHide={onClose} placement='end'>
-        <Offcanvas.Header>
+        <Offcanvas.Header closeButton>
           <Offcanvas.Title style={{width: '100%'}}>
           <div className={styles.flex} >
             <p className={styles.id}>Task-{task?.id}</p>
+            <div style={{marginRight: 20 }}>
             <SelectStatus options={statusOptions} selected={selectedStatus} onChange={onChangeStatus}/>
+            </div>
           </div>
           {
             isEditTitle? 
             <TextareaEdit onCloseEdit={closeEditTitle} maxCharacters={countCharacters.MAX_TITLE_TASK} className={styles.editTitle} value={titleEdit} onChange={onChangeTitleEdit} placeholder='Название'/>
-            :<p onDoubleClick={openEditTitle} className={styles.title}>{task?.title}</p>   
+            :<p onDoubleClick={openEditTitle} onTouchStart={openEditTitle} className={styles.title}>{task?.title}</p>   
           }
           </Offcanvas.Title>
         </Offcanvas.Header>
@@ -120,13 +130,13 @@ export const DialogTask: FC<DialogTaskProps> = ({onClose,show}) => {
             isEditDescription ?
             <TextareaEdit onCloseEdit={closeEditDesc} maxCharacters={countCharacters.MAX_DESC_TASK} className={styles.editDesc} value={descEdit} onChange={onChangeDescEdit} placeholder='Описание'/> 
             :
-            <p onDoubleClick={openEditDescription} className={styles.desc}>{task?.description}</p>
+            <p onDoubleClick={openEditDescription} onTouchStart={openEditDescription} className={styles.desc}>{task?.description}</p>
           }
           
           <p className={styles.delete} onClick={onShow}>Удалит задачу</p>
         </Offcanvas.Body>
       </Offcanvas>
-      <DeleteTask show={isShow} onHide={onHide}/>
+      <DeleteTask id={task?.id ?? 0} show={isShow} onCloseDetail={onClose} onHide={onHide}/>
       </>
   )
 }

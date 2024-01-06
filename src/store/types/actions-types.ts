@@ -13,15 +13,12 @@ export interface IFormLogin {
     password: string
 }
 
-export interface IUpdateStatusTaskForm {
-    id: number
-    status: statusTask
-}
 
 export interface IUpdateTaskForm {
     id: number
     title?: string
     description?: string
+    status?: statusTask
 }
 
 export interface ICreateTaskForm {

@@ -3,17 +3,23 @@ import React, { FC } from 'react'
 import { Modal } from 'react-bootstrap'
 import styles from './deleteTask.module.scss'
 import { useAppDispatch } from '@hooks/useAppDispatch'
-import { deleteUser } from '@store/slices/user-slice'
+import { deleteTask } from '@store/slices/detail-task-slice'
+import { getTasks } from '@store/slices/task-slice'
 
 interface DeleteTaskProps {
     onHide: () => void,
-    show: boolean
+    show: boolean,
+    id: number,
+    onCloseDetail: () => void 
 }
 
-export const DeleteTask: FC<DeleteTaskProps> = ({show,onHide}) => {
+export const DeleteTask: FC<DeleteTaskProps> = ({show,onHide, id,onCloseDetail}) => {
   const dispatch = useAppDispatch()
-  const onSubmit = () => {
-    
+  const onSubmit = async () => {
+   await dispatch(deleteTask(id))
+    dispatch(getTasks())
+    onCloseDetail()
+    onHide()
   }
   return (
     <Modal

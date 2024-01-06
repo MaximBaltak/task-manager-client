@@ -7,10 +7,10 @@ import styles from './createTask.module.scss'
 import { statusColor } from '@enum/statusColor'
 import { Textarea } from '@components/textarea/Textarea'
 import { countCharacters } from '@enum/countCharacters'
-import { loginUser } from '@store/slices/user-slice'
-import { ICreateTaskForm, IFormLogin } from '@store/types/actions-types'
+import { ICreateTaskForm } from '@store/types/actions-types'
 import { useAppDispatch } from '@hooks/useAppDispatch'
-import { create } from '@store/slices/detail-task-slice'
+import { createTask } from '@store/slices/detail-task-slice'
+import { getTasks } from '@store/slices/task-slice'
 interface CreateTaskProps {
     onHide: () => void,
     show: boolean
@@ -70,13 +70,14 @@ export const CreateTask: FC<CreateTaskProps> = ({show,onHide}) => {
     setDescription(e.target.value)
   }
   
-  const onSubmit = () => {
+  const  onSubmit = async () => {
       const form: ICreateTaskForm = {
           title,
           description
       }
-       dispatch(create(form))
-       onHide()
+        onHide()
+       await dispatch(createTask(form))
+       await dispatch(getTasks())
        emptyState()
   }
   return (

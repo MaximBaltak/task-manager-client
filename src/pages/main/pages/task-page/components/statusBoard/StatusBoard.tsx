@@ -6,8 +6,9 @@ import { ITask } from '@api/types/task-response'
 import { itemType } from '@enum/itemType'
 import { useDrop } from 'react-dnd'
 import { useAppDispatch } from '@hooks/useAppDispatch'
-import { IUpdateBoard } from '@store/types/actions-types'
-import { updateBoards } from '@store/slices/task-slice'
+import { IUpdateBoard, IUpdateTaskForm } from '@store/types/actions-types'
+import { getCountByStatus, getTasks, updateBoards } from '@store/slices/task-slice'
+import { updateTask } from '@store/slices/detail-task-slice'
 interface StatusBoardProps {
     status: IStatusSelect,
     tasks: ITask[],
@@ -18,13 +19,13 @@ export const StatusBoard: FC<StatusBoardProps> = ({ status,tasks,height }) => {
     const [ {isOver}, dropRef] = useDrop(() => {
         return {
             accept: itemType.CARD_TASK,
-            drop(item: any) {
-                const form: IUpdateBoard = {
-                    task: item.task,
-                    nextStatus: status.value
-                    
-                }
-                dispatch(updateBoards(form))
+          async drop(item: any) {
+                const form: IUpdateTaskForm = {
+                    id: item.task.id,
+                    status: status.value
+                  }
+                  await dispatch(updateTask(form))
+                  dispatch(getTasks())
             },
             collect(monitor) {
                 return {

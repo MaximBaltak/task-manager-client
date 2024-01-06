@@ -45,7 +45,7 @@ export const TextareaEdit: FC<TextareaEditProps> = ({
   };
 
   return (
-    <div onDoubleClick={onCloseEdit}>
+    <div onDoubleClick={onCloseEdit} onTouchEnd={onCloseEdit}>
       <textarea
         ref={textareaRef}
         className={className}
