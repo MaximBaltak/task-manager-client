@@ -1,0 +1,89 @@
+@import '@scss/style';
+.header{
+    width: 300px ;
+}
+.title{
+    margin: 0;
+    color: $text-color;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+.desc{
+    margin-top: 10px;
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    
+}
+
+.login{
+    margin: 0;
+    color: #A1A1A1;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+.register{
+    margin: 0;
+    color: $text-color;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.date{
+    margin: 0;
+    color: #A1A1A1;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+.title-chart{
+    margin: 0;
+    text-align: center;
+    font-size: 16px;
+}
+
+.edit{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    flex-flow: column;
+    height: 100px;
+    .flex{
+        width: inherit;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        column-gap: 10px;
+        p{
+            margin: 0;
+            width: 200;
+            color: $text-color;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        img{
+            display: block;
+            cursor: pointer;
+            width: 18px;
+            height: 15px;
+        }
+    }
+}
+.delete{
+    margin: 0;
+    position: absolute;
+    color: #FF0606;
+    bottom: 50px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    left: 36%;
+}

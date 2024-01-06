@@ -1,0 +1,24 @@
+.wrapper{
+    justify-content: center;
+    align-items: center;
+}
+.mode{
+    height: 35px;
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    right: 50px;
+    z-index: 2;
+}
+.flex{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+.text{
+    transform: translate(-125px, -14px);
+    position: absolute;
+    font-weight: 500;
+    color: black;
+}

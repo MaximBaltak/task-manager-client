@@ -1,11 +1,27 @@
 {
   "compilerOptions": {
+    "baseUrl": "./src/",
     "target": "es5",
     "lib": [
       "dom",
       "dom.iterable",
       "esnext"
     ],
+    "paths": {
+      "@api/*": ["api/*"],
+      "@assets/*": ["assets/*"],
+      "@components/*": ["components/*"],
+      "@hooks/*": ["hooks/*"],
+      "@pages/*": ["pages/*"],
+      "@routers/*": ["routers/*"],
+      "@scss/*": ["scss/*"],
+      "@store/*": ["store/*"],
+      "@utils/*": ["utils/*"],
+      "@enum/*": ["enum/*"],
+      "@fonts/*":["fronts/*"],
+      "@modal/*": ["modal/*"],
+      "@const/*": ["const/*"]
+    },
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,

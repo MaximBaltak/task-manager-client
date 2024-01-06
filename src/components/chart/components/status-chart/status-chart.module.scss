@@ -1,0 +1,29 @@
+.wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    flex-wrap: wrap;
+    column-gap:20px;
+    transform: translateY(-120px);
+}
+.legend{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 100;
+    column-gap: 3px;
+}
+
+.indicator{
+    display: block;
+    width: 15px;
+    height: 6px;
+    background: red;
+}
+.text{
+    margin: 0;
+    font-size: 14px;
+    font-weight: 400;
+    color: red;
+}

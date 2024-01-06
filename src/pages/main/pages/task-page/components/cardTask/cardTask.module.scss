@@ -1,0 +1,32 @@
+@import '@scss/style';
+
+.card {
+    width: 100%;
+    height: 80px;
+    flex-shrink: 0;
+    border-radius: 3px;
+    border: 1px solid #CD62FF;
+    background: #FFF;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+    padding: 8px;
+}
+
+.id {
+    cursor: pointer;
+    margin: 0;
+    color: #0385ff85;
+    font-size: 14px;
+    font-weight: 400;
+    text-decoration: underline;
+    width: 100%;
+}
+
+.title {
+    width: 100%;
+    color: $text-color;
+    margin: 0;
+    margin-top: 5px;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: normal;
+}

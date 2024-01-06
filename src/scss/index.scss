@@ -1,0 +1,55 @@
+@import '@scss/style';
+@import "@fonts/fonts";
+@import '~/node_modules/toastr/toastr.scss';
+
+* {
+  font-family: Roboto;
+}
+
+html,
+body {
+  height: 100%;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  background-color: $bacckground-app !important;
+  box-sizing: border-box;
+
+  &::-webkit-scrollbar {
+    height: 5px;
+    width: 5px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: white
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgb(0, 153, 255);
+    border-radius: 10px;
+  }
+}
+
+#root {
+  height: 100%;
+}
+
+.toast {
+  background-color: #030303 !important;
+}
+
+.toast-success {
+  background-color: #51a351 !important;
+}
+
+.toast-error {
+  background-color: #bd362f !important;
+}
+
+.toast-info {
+  background-color: #2f96b4 !important;
+}
+
+.toast-warning {
+  background-color: #f89406 !important;
+}

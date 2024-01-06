@@ -1,0 +1,57 @@
+@import '@scss/style';
+
+.header {
+    justify-content: space-between;
+    align-items: center;
+    min-height: 50px;
+    flex-wrap: nowrap;
+    background: $color-element;
+    width: 100%;
+    display: flex;
+    padding-left: 10px;
+    padding-right: 10px;
+    box-shadow: 0px 2px 3.2px 0px rgba(0, 0, 0, 0.25);
+    .wrapper{
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        column-gap: 21px;
+        max-width: 400px;
+        .profile{
+            margin: 0;
+            color: #FFF;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+            cursor: pointer;
+        }
+    }
+    .menu{
+        max-width: 400px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        column-gap: 10px;
+        .task{
+            width: 30px;
+            height: 37px;
+            
+        }
+    }
+    .out{
+        max-width: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        .text{
+            margin: 0;
+            color: #960202;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: normal;
+        }
+    }
+}
