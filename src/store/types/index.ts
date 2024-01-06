@@ -1,5 +1,7 @@
-import { IUserState } from "./reducers-types";
+import { IDetailTaskState, ITaskState, IUserState } from "./reducers-types";
 
 export interface IStoreSate {
-    user: IUserState
+    user: IUserState,
+    task: ITaskState,
+    detailTask: IDetailTaskState
 }

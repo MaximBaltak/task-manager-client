@@ -1,0 +1,12 @@
+@import '@scss/style';
+.flex{
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    color: $text-color;
+    font-size: 16px;
+    font-weight: 700;
+    flex-flow: column;
+    row-gap: 10px;
+    
+}

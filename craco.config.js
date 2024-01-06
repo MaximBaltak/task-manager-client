@@ -15,6 +15,7 @@ module.exports = {
         "@enum": path.resolve(__dirname, 'src/enum'),
         "@fonts": path.resolve(__dirname, 'src/fonts'),
         "@modal": path.resolve(__dirname, 'src/modal'),
+        "@const": path.resolve(__dirname,'src/const')
     },
   },
 };

@@ -3,7 +3,7 @@ import styles from './header.module.scss'
 import { Logo } from '@components/logo/Logo'
 import { Link } from 'react-router-dom'
 import { TooltipHint } from '@components/tooltip/TooltipHint'
-import TaskSVG from '@assets/image/task.svg'
+import DashboardSVG from '@assets/image/dashboard.svg'
 import { DialogProfile } from '../dialog-profile/DialogProfile'
 import { useAppDispatch } from '@hooks/useAppDispatch'
 import { exitUser } from '@store/slices/user-slice'
@@ -24,9 +24,9 @@ export const Header = () => {
                 </TooltipHint>
             </div>
             <div className={styles.menu}>
-                <Link to='/home/task'>
-                    <TooltipHint text='задачи' placement='bottom'>
-                        <img className={styles.task} src={TaskSVG} alt="задачи" />
+                <Link to='/home/dashboard'>
+                    <TooltipHint text='Доска задач' placement='bottom'>
+                        <img className={styles.task} src={DashboardSVG} alt="Доска задач" />
                     </TooltipHint>
                 </Link>
             </div>

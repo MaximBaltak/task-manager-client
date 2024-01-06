@@ -1,0 +1,19 @@
+    
+.flex{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+    margin-top: 54px;
+    overflow: auto;
+    &::-webkit-scrollbar{
+        height: 10px;
+    }
+    &::-webkit-scrollbar-track{
+        background: white
+    }
+    &::-webkit-scrollbar-thumb{
+        background: rgb(0, 153, 255);
+        border-radius: 10px;
+    }
+}

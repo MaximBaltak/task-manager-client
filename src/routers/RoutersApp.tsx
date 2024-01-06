@@ -35,8 +35,8 @@ export const RoutersApp = () => {
       <Route path='/' element={isAuth ? <Navigate to='/home'/>:<Navigate to='/login'/>}/>
       <Route path='/login' element={isAuth ? <Navigate to='/home'/>:<Login/>}/>
       <Route path='/home' element={isAuth ? <Main/>: <Navigate to='/login'/>}>
-        <Route path='' element={<Navigate to='task'/>}/>
-        <Route path='task' element={<TaskPage/>}/>
+        <Route path='' element={<Navigate to='dashboard'/>}/>
+        <Route path='dashboard' element={<TaskPage/>}/>
       </Route>
     </Routes>
   )

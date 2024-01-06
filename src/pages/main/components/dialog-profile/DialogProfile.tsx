@@ -46,7 +46,7 @@ export const DialogProfile: FC<DialogProfileProps> = ({onClose,show,user}) => {
                 <p className={styles.login}>{user?.login}</p>
                 <div>
                   <p className={styles.register}>Регистрация:</p>
-                  {user && <p className={styles.date}>{format(user.createAt,'dd.mm.yyyy')}</p>}
+                  {user && <p className={styles.date}>{format(user.createAt,'dd.MM.yyyy')}</p>}
                 </div>
               </div>
             </div>  

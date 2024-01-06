@@ -2,7 +2,7 @@ export interface IUser {
     id: number
     name: string
     login: string
-    createAt: Date
+    createAt: string
 }
 
 export interface IUpdatePasswordForm {

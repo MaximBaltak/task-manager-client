@@ -20,6 +20,7 @@
       "@enum/*": ["enum/*"],
       "@fonts/*":["fronts/*"],
       "@modal/*": ["modal/*"],
+      "@const/*": ["const/*"]
     },
     "allowJs": true,
     "skipLibCheck": true,
